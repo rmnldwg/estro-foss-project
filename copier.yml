@@ -1,0 +1,12 @@
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/licenses.py:LicenseChoiceUpdater
+
+project_name:
+  type: str
+  help: A short and somewhat unique name
+
+license:
+  type: str
+  help: Select the license that best fits your project. Help can be found on https://choosealicense.com
+  choices: ["{% for option in license_options %}option{% endfor %}"]
