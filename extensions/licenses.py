@@ -1,4 +1,4 @@
-"""Implements a copier context hook to provide FOSS licenses as choices."""
+"""Extensions for dynamic license choices and full license info."""
 
 import os
 
@@ -24,14 +24,22 @@ def _assemble_headers() -> dict:
 
 def fetch_common_licenses() -> list[dict]:
     """Fetch commonly used licenses from GitHub's REST API."""
-    response = requests.get(GH_API_URL, headers=_assemble_headers())
+    response = requests.get(
+        url=GH_API_URL,
+        headers=_assemble_headers(),
+        timeout=10,
+    )
     response.raise_for_status()
     return response.json()
 
 
 def fetch_full_license(key: str) -> dict:
-    """Fetch full license text from GitHub's REST API."""
-    response = requests.get(f"{GH_API_URL}/{key}", headers=_assemble_headers())
+    """Fetch full license info from GitHub's REST API."""
+    response = requests.get(
+        url=f"{GH_API_URL}/{key}",
+        headers=_assemble_headers(),
+        timeout=10,
+    )
     response.raise_for_status()
     return response.json()
 
