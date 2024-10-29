@@ -1,0 +1,16 @@
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/licenses.py:LicenseChoiceExtension
+
+_message_before_copy: |
+  Well hello there!
+
+license:
+  type: str
+  help: |
+    Choose a license for your project. Get help at https://choosealicense.com:
+    {% for option in license_options %}
+       {{ "{:>12}".format(option.key) }}:  {{ option.name }}
+    {%- endfor %}
+     
+  default: mit
