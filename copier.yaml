@@ -1,8 +1,9 @@
 _jinja_extensions:
   - copier_templates_extensions.TemplateExtensionLoader
+  - jinja2_slug.SlugExtension
   - extensions/licenses.py:LicenseChoiceExtension
   - extensions/year.py:YearExtension
-  - extensions/authors.py:SplitAuthorsUpdater
+  - extensions/split.py:SplitFilterExtension
 
 _exclude:
   - copier.yaml
@@ -23,12 +24,20 @@ _exclude:
 
 project_name:
   type: str
-  help: Give your project a catchy and unique name!
+  help: |
+    Give your project a catchy and unique name. Note that in some places where e.g.
+    spaces are not allowed, a "slugified" value will be inserted, turnin "My Project"
+    into "my-project".
 
 description:
   type: str
   multiline: true
   help: Briefly describe what your project is about.
+
+keywords:
+  type: str
+  help: Add a few comma-separated keywords you would associate your project with.
+  default: cancer, radiotherapy, estro
 
 authors:
   type: str

@@ -1,12 +1,16 @@
 [project]
-name = "{{ project_name }}"
+name = "{{ project_name|slug }}"
 description = "{{ description }}"
 authors = [
-{%- for author in authors %}
+{%- for author in authors|split(",") %}
     { name="{{ author }}", {% if loop.first %}email="{{ contact_email }}" {% endif %}},
 {%- endfor %}
 ]
 readme = "README.md"
 requires-python = ">=3.10"
-keywords = []
+keywords = [
+    {%- for kw in keywords|split(",") -%}
+    "{{ kw }}"{% if not loop.last %}, {% endif %}
+    {%- endfor -%}
+]
 license = { file="LICENSE" }
