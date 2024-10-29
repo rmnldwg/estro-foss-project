@@ -25,9 +25,18 @@ project_name:
   type: str
   help: Give your project a catchy and unique name!
 
+description:
+  type: str
+  multiline: true
+  help: Briefly describe what your project is about.
+
 authors:
   type: str
   help: List authors of your project, separated by commas.
+
+contact_email:
+  type: str
+  help: An email address to contact you regarding the project.
 
 license:
   type: str
@@ -42,8 +51,7 @@ license:
 frameworks:
   type: str
   help: Which framework(s) are you going to work with?
+  multiselect: true
   choices:
     Python: py
-    JavaScript:
-      value: js
-      validator: Not Implemented
+    JavaScript: js

@@ -1,0 +1,12 @@
+[project]
+name = "{{ project_name }}"
+description = "{{ description }}"
+authors = [
+{%- for author in authors %}
+    { name="{{ author }}", {% if loop.first %}email="{{ contact_email }}" {% endif %}},
+{%- endfor %}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = []
+license = { file="LICENSE" }
