@@ -49,5 +49,5 @@ class LicenseChoiceExtension(Extension):
 
     def __init__(self, environment):
         super().__init__(environment)
-        environment.globals["license_options"] = fetch_common_licenses()
+        environment.globals["common_licenses"] = fetch_common_licenses()
         environment.globals["fetch_full_license"] = fetch_full_license

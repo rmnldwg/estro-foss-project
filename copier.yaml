@@ -14,7 +14,6 @@ _exclude:
   - .DS_Store
   - .svn
   - .gitignore
-  - README.md
   - requirements.in
   - extensions
 
@@ -24,7 +23,7 @@ _exclude:
 
 project_name:
   type: str
-  help: Give your project a catchy and unique name! {{ test }}
+  help: Give your project a catchy and unique name!
 
 authors:
   type: str
@@ -34,8 +33,17 @@ license:
   type: str
   help: |
     Choose a license for your project. Get help at https://choosealicense.com:
-    {% for option in license_options %}
+    {% for option in common_licenses %}
        {{ "{:>12}".format(option.key) }}:  {{ option.name }}
     {%- endfor %}
      
   default: mit
+
+frameworks:
+  type: str
+  help: Which framework(s) are you going to work with?
+  choices:
+    Python: py
+    JavaScript:
+      value: js
+      validator: Not Implemented
