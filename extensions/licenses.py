@@ -50,4 +50,4 @@ class LicenseChoiceExtension(Extension):
     def __init__(self, environment):
         super().__init__(environment)
         environment.globals["license_options"] = fetch_common_licenses()
-        environment.filters["fetch_full_license"] = fetch_full_license
+        environment.globals["fetch_full_license"] = fetch_full_license

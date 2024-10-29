@@ -1,0 +1,41 @@
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/licenses.py:LicenseChoiceExtension
+  - extensions/year.py:YearExtension
+  - extensions/authors.py:SplitAuthorsUpdater
+
+_exclude:
+  - copier.yaml
+  - copier.yml
+  - ~*
+  - "*.py[co]"
+  - __pycache__
+  - .git
+  - .DS_Store
+  - .svn
+  - .gitignore
+  - README.md
+  - requirements.in
+  - extensions
+
+## When using this, the context hook is executed before answering questions.
+# _message_before_copy: |
+#   Ladida
+
+project_name:
+  type: str
+  help: Give your project a catchy and unique name! {{ test }}
+
+authors:
+  type: str
+  help: List authors of your project, separated by commas.
+
+license:
+  type: str
+  help: |
+    Choose a license for your project. Get help at https://choosealicense.com:
+    {% for option in license_options %}
+       {{ "{:>12}".format(option.key) }}:  {{ option.name }}
+    {%- endfor %}
+     
+  default: mit
