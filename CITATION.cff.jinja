@@ -8,15 +8,15 @@ message: >-
   metadata from this file.
 type: {{ project_type }}
 authors:
-  {% for author in authors -%}
+{%- for author in authors|split(',') %}
   - {{ author }}
-  {% endfor %}
+{%- endfor %}
 repository-code: '{{ repo_url }}'
 abstract: >-
   {{ description }}
 keywords:
-  {% for kw in keywords -%}
+{%- for kw in keywords|split(',') %}
   - {{ kw }}
-  {% endfor %}
+{%- endfor %}
 license: {{ license }}
 version: '{{ version }}'
