@@ -67,6 +67,13 @@ license:
 
   default: mit
 
+version:
+  type: str
+  help: |
+    A version helps you and users keep track of updates and potential compatibility
+    issues. We recommend so-called semantic versioning (https://semver.org/)
+  default: 0.1.0
+
 frameworks:
   type: str
   help: Which framework(s) are you going to work with?
