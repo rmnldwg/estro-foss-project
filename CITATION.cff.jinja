@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: '{{ project_name }}'
+message: >-
+  If you use this {{ project_type }}, please cite it using the
+  metadata from this file.
+type: {{ project_type }}
+authors:
+  {% for author in authors -%}
+  - {{ author }}
+  {% endfor %}
+repository-code: '{{ repo_url }}'
+abstract: >-
+  {{ description }}
+keywords:
+  {% for kw in keywords -%}
+  - {{ kw }}
+  {% endfor %}
+license: {{ license }}
+version: '{{ version }}'

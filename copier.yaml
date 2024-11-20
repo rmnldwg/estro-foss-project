@@ -29,6 +29,12 @@ project_name:
     spaces are not allowed, a "slugified" value will be inserted, turnin "My Project"
     into "my-project".
 
+project_type:
+  type: str
+  choices:
+    - software
+    - dataset
+
 description:
   type: str
   multiline: true
@@ -47,14 +53,18 @@ contact_email:
   type: str
   help: An email address to contact you regarding the project.
 
+repo_url:
+  type: str
+  help: URL to the remote repository where this will be published.
+
 license:
   type: str
   help: |
     Choose a license for your project. Get help at https://choosealicense.com:
     {% for option in common_licenses %}
-       {{ "{:>12}".format(option.key) }}:  {{ option.name }}
+      {{ "{:>12}".format(option.key) }}:  {{ option.name }}
     {%- endfor %}
-     
+
   default: mit
 
 frameworks:
