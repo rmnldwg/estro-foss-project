@@ -1,6 +1,7 @@
 [project]
 name = "{{ project_name|slug }}"
 description = "{{ description }}"
+version = "{{ version }}"
 authors = [
 {%- for author in authors|split(",") %}
     { name="{{ author }}", {% if loop.first %}email="{{ contact_email }}" {% endif %}},
@@ -14,3 +15,6 @@ keywords = [
     {%- endfor -%}
 ]
 license = { file="LICENSE" }
+
+[project.urls]
+repository = {{ repo_url }}
