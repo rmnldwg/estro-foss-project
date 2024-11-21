@@ -7,22 +7,26 @@
 
 ## Installing the Requirements
 
+First, let's install [`pipx`](https://pipx.pypa.io/stable/), a great tool to install Python command line tools, such as the templating machinery of [`copier`].
+
 ```bash
 pip install --user pipx
-
 pipx install copier
-pipx runpip copier install -r requirements.txt
+```
+
+To run our particular template, some additional Python packages are necessary. They are easily installed by running the following command:
+
+```bash
+pipx runpip copier install $(curl https://raw.githubusercontent.com/rmnldwg/estro-foss-project/refs/heads/main/requirements.in)
 ```
 
 ## Using the Template
 
 ```bash
-mkdir your-project-dir
+copier copy https://github.com/rmnldwg/estro-foss-project your-project-dir
+# answer questions...
 cd your-project-dir
 git init .
-
-copier copy https://github.com/rmnldwg/estro-foss-project .
-# answer questions...
 git add .
 git commit -m "initialize project from template"
 ```
