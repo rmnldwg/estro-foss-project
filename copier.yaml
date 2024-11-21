@@ -19,18 +19,25 @@ _exclude:
   - extensions
 
 ## When using this, the context hook is executed before answering questions.
-# _message_before_copy: |
-#   Ladida
+_message_before_copy: |
+  Thank you for using the ESTRO-backed FOSS template.
+
+  We hope that this allows you to jumpstart your open-source contribution to the
+  radiation oncology (or any other) community. In the following, we will ask you
+  some questions to set up the repository as much as possible. If any issues arise,
+  head over to https://github.com/rmnldwg/estro-foss-project where we host the
+  documentation and where you can open an issue tracker.
 
 project_name:
   type: str
   help: |
     Give your project a catchy and unique name. Note that in some places where e.g.
-    spaces are not allowed, a "slugified" value will be inserted, turnin "My Project"
+    spaces are not allowed, a "slugified" value will be inserted, turning "My Project"
     into "my-project".
 
 project_type:
   type: str
+  help: Are you publishing software or a dataset?
   choices:
     - software
     - dataset
@@ -38,7 +45,7 @@ project_type:
 description:
   type: str
   multiline: true
-  help: Briefly describe what your project is about.
+  help: Briefly (1 to 3 sentences) describe what your project is about.
 
 keywords:
   type: str
@@ -51,7 +58,7 @@ authors:
 
 contact_email:
   type: str
-  help: An email address to contact you regarding the project.
+  help: An email address someone may use to contact you in case of questions.
 
 repo_url:
   type: str
@@ -61,10 +68,9 @@ license:
   type: str
   help: |
     Choose a license for your project. Get help at https://choosealicense.com:
-    {% for option in common_licenses %}
-      {{ "{:>12}".format(option.key) }}:  {{ option.name }}
+    {%- for option in common_licenses %}
+      {{ "{:>13}".format(option.key) }}: {{ option.name }}
     {%- endfor %}
-
   default: mit
 
 version:
