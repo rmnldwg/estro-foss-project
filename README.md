@@ -2,6 +2,9 @@
 
 [`copier`] template for starting a free and open source (FOSS) project as recommended by [ESTRO].
 
+> [!CAUTION]
+> This is still in its very early stages and NOT yet officially endorsed by [ESTRO]!
+
 [`copier`]: https://copier.readthedocs.io
 [ESTRO]: https://estro.org
 
