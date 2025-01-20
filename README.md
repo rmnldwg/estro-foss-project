@@ -45,3 +45,10 @@ git commit -m "initialize project from template"
 ```
 
 [git]: https://git-scm.com
+
+## Contributing to this Template
+
+As of now, this project is in its infancy. We know we would like to help people get better at sharing their code and data and reduce their time spent on settings it up in a recommended way. But we don't know what kinds of projects most people would want to set up (see [this issue] on that). So, if you have a particular need/idea, then feel free to [open an issue] in this GitHub repository.
+
+[this issue]: https://github.com/rmnldwg/estro-foss-project/issues/1
+[open an issue]: https://github.com/rmnldwg/estro-foss-project/issues/new/choose
