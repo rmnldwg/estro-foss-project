@@ -2,6 +2,8 @@
 
 {{ description }}
 """
-__version__ = '{{ version }}'
-__author__ = '{{ authors[0] }}'
-__license__ = '{{ license }}'
+__version__ = "{{ version }}"
+{% with author_list = authors|split(',') -%}
+__author__ = "{{ author_list[0] }}"
+{%- endwith %}
+__license__ = "{{ license }}"
