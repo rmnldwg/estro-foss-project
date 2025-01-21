@@ -85,4 +85,9 @@ frameworks:
   multiselect: true
   choices:
     Python: py
-    JavaScript: js
+
+tests:
+  type: bool
+  help: Add basic testing scaffolding? (recommended)
+  default: true
+  when: "{{ 'py' in frameworks }}"
