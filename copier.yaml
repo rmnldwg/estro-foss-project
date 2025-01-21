@@ -1,9 +1,9 @@
 _jinja_extensions:
   - copier_templates_extensions.TemplateExtensionLoader
-  - jinja2_slug.SlugExtension
   - extensions/licenses.py:LicenseChoiceExtension
-  - extensions/year.py:YearExtension
+  - extensions/slug.py:SlugifyFilterExtension
   - extensions/split.py:SplitFilterExtension
+  - extensions/year.py:YearExtension
 
 _exclude:
   - copier.yaml
