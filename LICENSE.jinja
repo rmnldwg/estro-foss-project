@@ -1,4 +1,4 @@
-{%- set license = fetch_full_license(license).body -%}
+{%- set license = fetch_license_body(license) -%}
 {%- set license = license|replace("[year]", current_year) -%}
 {%- set license = license|replace("[fullname]", authors[0]) -%}
 {{ license }}

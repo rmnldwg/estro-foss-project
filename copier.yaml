@@ -63,14 +63,21 @@ repo_url:
   type: str
   help: URL to the remote repository where this will be published.
 
+# The listed options for a license vary depending on the `project_type`:
+# - software: licenses from https://choosealicense.com are displayed. These include 
+#   e.g. the MIT and Apache license.
+# - dataset: the six creative commons licenses are displayed, e.g. CC BY 4.0.
 license:
   type: str
   help: |
-    Choose a license for your project. Get help at https://choosealicense.com:
-    {%- for option in common_licenses %}
+    Choose a license for your {{ project_type }}. Get help at
+    {%- if project_type == 'software' %} https://choosealicense.com:
+    {%- else %} https://chooser-beta.creativecommons.org/
+    {%- endif %}
+    {%- for option in fetch_license_options(project_type) %}
       {{ "{:>13}".format(option.key) }}: {{ option.name }}
     {%- endfor %}
-  default: mit
+  default: "{% if project_type == 'software' %}mit{% else %}cc-by{% endif %}"
 
 version:
   type: str
