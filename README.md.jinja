@@ -1,2 +1,23 @@
 # {{ project_name }}
 
+{{ description }}
+
+## Checklist for Maintainers
+
+> [!NOTE]
+> Go through this checklist to ensure that the project is in a good state.
+> You may want to delete this before publishing the project.
+
+- [x] Specify basic information, such as name, description, etc.
+- [x] Add a `LICENSE` file with the suitable license for your project.
+- [x] Add a `README.md` file.
+- [x] Make it citeable via a `CITATION.cff` file.
+- [x] Choose a versioning scheme and assign an initial version.
+- [ ] Add a `CHANGELOG.md` file to document how a new version differs from the previous one.
+- [ ] Add a `CONTRIBUTING.md` file to let others know how to contribute to the project.
+- [ ] Let users know how to {% if project_type == 'software' %}install{% else %}download{% endif %} the {{ project_type }}, including potential dependencies.
+- [ ]
+
+## {% if project_type == 'software' %}Installation{% else %}Download{% endif %}
+
+...
