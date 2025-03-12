@@ -85,16 +85,3 @@ version:
     A version helps you and users keep track of updates and potential compatibility
     issues. We recommend so-called semantic versioning (https://semver.org/)
   default: 0.1.0
-
-frameworks:
-  type: str
-  help: Which framework(s) are you going to work with?
-  multiselect: true
-  choices:
-    Python: py
-
-tests:
-  type: bool
-  help: Add basic testing scaffolding? (recommended)
-  default: true
-  when: "{{ 'py' in frameworks }}"
