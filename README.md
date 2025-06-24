@@ -10,20 +10,24 @@ A [`copier`] template for starting a free and open source (FOSS) project as reco
 [`copier`]: https://copier.readthedocs.io
 [ESTRO]: https://estro.org
 
-## Installing the Requirements
+## Installing `copier`
 
-First, let's install [`pipx`](https://pipx.pypa.io/stable/), a great tool to install Python command line tools, such as the templating machinery of [`copier`].
+The tool that fetches the template and asks you a series of questions to customize the project is called [`copier`]. There are several ways to install and use it. The easiest way is if you have either [pipx] or [uv] installed:
 
 ```bash
-pip install --user pipx
 pipx install copier
 ```
 
-To run our particular template, some additional Python packages are necessary. They are easily installed by running the following command:
+or
 
 ```bash
-pipx runpip copier install $(curl https://raw.githubusercontent.com/rmnldwg/estro-foss-project/refs/heads/main/requirements.in)
+uv tool install copier
 ```
+
+The result of both commands is that you can run `copier` from the command line.
+
+[pipx]: https://pipx.pypa.io/stable/
+[uv]: https://docs.astral.sh/uv/
 
 ## Using the Template
 

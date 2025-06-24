@@ -5,15 +5,15 @@ message: >-
   metadata from this file.
 type: {{ project_type }}
 authors:
-{%- for author in authors|split(',') %}
-  - {{ author }}
+{%- for author in authors.split(',') %}
+  - {{ author.strip() }}
 {%- endfor %}
 repository-code: '{{ repo_url }}'
 abstract: >-
   {{ description }}
 keywords:
-{%- for kw in keywords|split(',') %}
-  - {{ kw }}
+{%- for kw in keywords.split(',') %}
+  - {{ kw.strip() }}
 {%- endfor %}
 license: {{ license }}
 version: '{{ version }}'

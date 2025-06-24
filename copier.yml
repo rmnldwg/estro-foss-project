@@ -1,21 +1,5 @@
-_jinja_extensions:
-  - copier_templates_extensions.TemplateExtensionLoader
-  - extensions/licenses.py:LicenseChoiceExtension
-  - extensions/slug.py:SlugifyFilterExtension
-  - extensions/split.py:SplitFilterExtension
-  - extensions/year.py:YearExtension
-
-_exclude:
-  - copier.yaml
-  - copier.yml
-  - ~*
-  - __pycache__
-  - .git
-  - .DS_Store
-  - .svn
-  - .gitignore
-  - requirements.in
-  - extensions
+## This allows us to keep the template metadata separate from the template itself
+_subdirectory: template
 
 ## When using this, the context hook is executed before answering questions.
 _message_before_copy: |
@@ -34,12 +18,22 @@ project_name:
     spaces are not allowed, a "slugified" value will be inserted, turning "My Project"
     into "my-project".
 
+project_slug:
+  type: str
+  default: "{{ project_name|lower|replace(' ','_')|replace('-', '_') }}"
+  when: false
+
 project_type:
   type: str
   help: Are you publishing software or a dataset?
   choices:
     - software
     - dataset
+
+project_path:
+  type: str
+  default: "{% if project_type == 'software' %}src/{{ project_slug }}/{% else %}data/{% endif %}"
+  when: false
 
 description:
   type: str
@@ -63,21 +57,32 @@ repo_url:
   type: str
   help: URL to the remote repository where this will be published.
 
-# The listed options for a license vary depending on the `project_type`:
-# - software: licenses from https://choosealicense.com are displayed. These include 
-#   e.g. the MIT and Apache license.
-# - dataset: the six creative commons licenses are displayed, e.g. CC BY 4.0.
+year:
+  type: int
+  help: Which year was this project created/published?
+
 license:
   type: str
   help: |
-    Choose a license for your {{ project_type }}. Get help at
-    {%- if project_type == 'software' %} https://choosealicense.com:
-    {%- else %} https://chooser-beta.creativecommons.org/
-    {%- endif %}
-    {%- for option in fetch_license_options(project_type) %}
-      {{ "{:>13}".format(option.key) }}: {{ option.name }}
-    {%- endfor %}
-  default: "{% if project_type == 'software' %}mit{% else %}cc-by{% endif %}"
+    Choose a license under which to publish your work. You can get help at
+    {%- if project_type == 'software' -%} https://choosealicense.com {% else %} https://creativecommons.org/ {% endif %}.
+    If your preferred license isn't listed as an option, choose `none` and paste it
+    into the `LICENSE` file after the project has been created.
+  choices: |
+    {% if project_type == 'software' %}
+    - MIT
+    - GNU GPLv3
+    - none
+    {% else %}
+    - CC-BY
+    - CC-BY-SA
+    - CC-BY-NC
+    - CC-BY-NC-SA
+    - CC-BY-ND
+    - CC-BY-NC-ND
+    - CC0
+    - none
+    {% endif %}
 
 version:
   type: str

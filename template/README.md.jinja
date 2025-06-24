@@ -1,0 +1,65 @@
+# {{ project_name }}
+
+{{ description }}
+
+## Checklist for Maintainers
+
+> [!NOTE]
+> Go through this checklist to ensure that the project is in a good state.
+> You may want to delete this before publishing the project.
+
+- [x] Specify basic information, such as name, description, etc.
+- [x] Add a `LICENSE` file with the suitable license for your project.
+- [x] Add a `README.md` file.
+    - [ ] Describe how to {% if project_type == 'software' %}install (including dependencies){% else %}download{% endif %} the {{ project_type }}.
+    - [ ] Remove all the TODOs and notes to the maintainer.
+- [x] Make it citeable via a [`CITATION.cff`](https://citation-file-format.github.io/) file.
+- [x] Choose a versioning scheme and assign an initial version.
+- [ ] Add a [`CHANGELOG.md`](https://keepachangelog.com/en/1.1.0/) file to document how a new version differs from the previous one.
+- [ ] Add a `CONTRIBUTING.md` file to let others know how to contribute to the project.
+- [ ] Write and host a documentation for your {{ project_type }}. A basic [MkDocs](https://www.mkdocs.org/) setup is already included under `docs/`.
+  {% if project_type == "software" -%}
+- [ ] Write automated tests to ensure the software works as expected.
+  {% endif -%}
+
+{% if project_type == 'software' -%}
+## Installation
+
+> [!NOTE]
+> TODO: Describe how to install the software, including dependencies, if any.
+
+...
+{%- else -%}
+## Download
+
+> [!NOTE]
+> TODO: Describe where and how to download the dataset.
+
+...
+{%- endif %}
+
+## Attribution
+
+You can cite the {{ project_type }} using the `CITATION.cff` file in this repository, or using the following BibTeX entry:
+
+{% raw %}```bibtex{% endraw %}
+@misc{{ '{' }}{{ project_name | lower }},
+  title = {{ '{' }}{{ project_name }}{{ '}' }},
+  version = {{ '{' }}{{ version }}{{ '}' }},
+  url = {{ '{' }}{{ repo_url }}{{ '}' }},
+  year = {{ '{' }}{{ year }}{{ '}' }},
+  description = {{ '{' }}{{ description }}{{ '}' }},
+  author = {{ '{' }}{% for author in authors.split(',') %}{{ author.strip() }}{% if not loop.last %} AND {% endif %}{% endfor %}{{ '}' }},
+{{ '}' }}
+{% raw %}```{% endraw %}
+
+## Copyright
+
+> [!NOTE]
+> Some people put the copyright notice in the `LICENSE` file,
+> [which others discourage](https://reuse.software/faq/#license-templates).
+> Legally best would be to put the copyright notice in every source file, but that isn't super practical.
+> We think putting it here is a good compromise, but you can change it if you want.
+
+This {{ project_type }} is licensed under the {{ license }} license.
+Copyright © {{ year }} {% for author in authors.split(',') %}{{ author.strip() }}{% if not loop.last %}, {% endif %}{% endfor %}.
