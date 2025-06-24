@@ -48,7 +48,23 @@ git add .
 git commit -m "initialize project from template"
 ```
 
+## Updating the Choices
+
+If you want to change any of the answers you provided to the questions, you can simply do so by running the following command in the project directory:
+
+```bash
+copier update
+```
+
+You will then be asked the questions again, with the previous answers pre-filled. You can change any of them, and the files will be updated accordingly.
+
+Similarly, if this template changes and you want to have these changes reflected in your project, you can run the same update command. Read more on [copier's documentation] on the details of how this works.
+
+> [!WARNING]
+> This only works if you have started tracking the project using [git] as described above.
+
 [git]: https://git-scm.com
+[copier's documentation]: https://copier.readthedocs.io/en/stable/updating
 
 ## Contributing to this Template
 
